@@ -28,13 +28,14 @@
 			<div class="clearfix">
 			</div>
 			<div class="tab-content">
-				{% for same_prod in same_products %}
+				{% for prod in products %}
 				<div class="block">
-					<a href="#"><img src="{% static 'img/' %}{{same_prod.img}}" alt="" width="270", height="270">
+					<a href="#"><img src="/media/{{prod.image}}" alt="" width="270", height="270">
 						<div class="text">
 							<img src="{% static 'img/icon-hover.png' %}" alt="img">
-							<h4>{{same_prod.name|upper}}</h4>
-							<p>{{same_prod.desc}}</p>
+							<h4>{{prod.category.name|upper}}</h4>
+							<h4>{{prod.name|upper}}</h4>
+							<p>{{prod.description}}</p>
 						</div> 
 					</a>
 				</div>

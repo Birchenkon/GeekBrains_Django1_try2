@@ -1,34 +1,29 @@
 from django.shortcuts import render
+from .models import ProductCategory, Product
+from django.conf import settings
 
 
 def main(request):
-    same_products = [
-        {"img": "product-71.jpg", "name": "стул фанбюн", "desc": "Расположитесь комфортно."},
-        {"img": "product-20.jpg", "name": "стул линрабд", "desc": "Не оторваться."}
-    ]
-    content = {"same_products": same_products}
+    title = 'Главная'
+    all_products = Product.objects.all()[:2]
+    content = {'title': title, 'products': all_products}
     return render(request, 'mainapp/index.html', context=content)
 
 
-def products(request):
-    links_menu = [
-        {"href": "products_all", "name": "все"},
-        {"href": "products_home", "name": "дом"},
-        {"href": "products_office", "name": "офис"},
-        {"href": "products_modern", "name": "модерн"},
-        {"href": "products_classic", "name": "классика"},
-    ]
+def products(request, pk=None):
+    title = 'Продукты'
+    links_menu = ProductCategory.objects.all()
     slider_products = [
         {"img": "prod-2.jpg"},
         {"img": "prod-3.jpg"},
         {"img": "prod-4.jpg"},
     ]
-    same_products = [
-        {"name": "Отличный стул", "img": "product-22.jpg", "alt": "product-22"},
-        {"name": "Улучшенный стул", "img": "product-20.jpg", "alt": "product-20"},
-        {"name": "Гроссмейстерский стул", "img": "product-71.jpg", "alt": "product-71"},
-    ]
-    content = {"links_menu": links_menu, "slider_products": slider_products, "same_products": same_products}
+    same_products = Product.objects.all()
+    content = {"title": title, "slider_products": slider_products, "links_menu": links_menu,
+               "same_products": same_products, "media_url": settings.MEDIA_URL,
+               }
+    if pk:
+        print(f"User select category: {pk}")
     return render(request, 'mainapp/products.html', context=content)
 
 
