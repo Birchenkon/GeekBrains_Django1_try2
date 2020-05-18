@@ -1,0 +1,6 @@
+.pycharm
+__pycache__
+__init__
+
+*.pyc
+db.sqlite3
