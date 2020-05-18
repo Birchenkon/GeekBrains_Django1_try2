@@ -1,0 +1,28 @@
+[
+  {
+    "model": "mainapp.ProductCategory",
+    "pk": 1,
+    "fields": {"name": "стулья", "description": "Мы поможем вам выбрать самые удобные стулья."}
+  },
+  {
+    "model": "mainapp.ProductCategory",
+    "pk": 2,
+    "fields": {"name": "кресла", "description": "Ваш комфорт в наших креслах!"}
+  },
+  {
+    "model": "mainapp.ProductCategory",
+    "pk": 3,
+    "fields": {"name": "стульчики для кормления", "description": "Все для самых маленьких."}
+  },
+  {
+    "model": "mainapp.ProductCategory",
+    "pk": 4,
+    "fields": {"name": "табуреты", "description": "Компактность по новому."}
+  }
+  ,
+  {
+    "model": "mainapp.ProductCategory",
+    "pk": 5,
+    "fields": {"name": "Подушки на стулья", "description": "Добавим мягкости."}
+  }
+]

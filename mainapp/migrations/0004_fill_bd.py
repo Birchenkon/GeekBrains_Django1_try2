@@ -3,11 +3,107 @@
 from django.db import migrations
 
 
+def forwards_func(apps, schema_editor):
+    pro_cat_model = apps.get_model("mainapp", "ProductCategory")  # Load model for make changes
+    pro_model = apps.get_model("mainapp", "Product")  # Load model for make changes
+    con_model = apps.get_model("mainapp", "Contact")  # Load model for make changes
+
+    # Категория 1
+    pro_cat_obj = pro_cat_model.objects.create(
+        pk=1,
+        name="стулья", description="Мы поможем вам выбрать самые удобные стулья.")
+
+    # Продукты
+    pro_model.objects.create(
+        pk=1,
+        category=pro_cat_obj,  # Fk
+        name="Для кухни",
+        image="product_img/product-22.jpg",
+        description="Незаменимая вещь, чтобы быстро позавтракать на кухне.",
+        price="1249",
+        quantity=17,
+    )
+    pro_model.objects.create(
+        pk=2,
+        category=pro_cat_obj,  # Fk
+        name="Для гостинной",
+        image="product_img/product-20.jpg",
+        description="Стиль и комфорт для долгих посиделок.",
+        price="4999",
+        quantity=102,
+    )
+    del pro_cat_obj
+
+    # Категория 2
+    pro_cat_obj = pro_cat_model.objects.create(
+        pk=2,
+        name="кресла", description="Ваш комфорт в наших креслах!")
+
+    # Продукты в категории кресла
+    pro_model.objects.create(
+        pk=3,
+        category=pro_cat_obj,  # Fk
+        name="Для спальни",
+        image="product_img/product-71.jpg",
+        description="Неизменная классика с новым уровнем уюта.",
+        price="8499",
+        quantity=32,
+    )
+    del pro_cat_obj
+
+    # Категория 3
+    pro_cat_obj = pro_cat_model.objects.create(
+        pk=3,
+        name="стульчики для кормления", description="Все для самых маленьких.")
+    del pro_cat_obj
+
+    # Категория 4
+    pro_cat_obj = pro_cat_model.objects.create(
+        pk=4,
+        name="табуреты", description="Компактность по новому.")
+    del pro_cat_obj
+
+    # Категория 5
+    pro_cat_obj = pro_cat_model.objects.create(
+        pk=5,
+        name="Подушки на стулья", description="Добавим мягкости.")
+    del pro_cat_obj
+
+    # Create contacts
+    con_model.objects.create(
+        pk=1,
+        phone="+7-888-888-8888",
+        email="myshop_msc@gmail.com",
+        city="Москва",
+        address="3-я улица Строителей д. 25"
+    )
+    con_model.objects.create(
+        pk=2,
+        phone="+7-777-777-7777",
+        email="myshop_spb@gmail.com",
+        city="Санкт-Петербург",
+        address="3-я улица Строителей д. 25",
+    )
+    con_model.objects.create(
+        pk=3,
+        phone="+7-999-999-9999",
+        email="myshop_vld@gmail.com",
+        city="Владивосток",
+        address="ул. Московская д.10",
+    )
+
+
+def reverse_func(apps, schema_editor):
+    pro_cat_model = apps.get_model("mainapp", "ProductCategory")  # Load model for make changes
+    con_model = apps.get_model("mainapp", "Contact")  # Load model for make changes
+
+    # Delete all objects
+    pro_cat_model.objects.all().delete()
+    con_model.objects.all().delete()
+
+
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('mainapp', '0003_contact'),
-    ]
+    dependencies = [("mainapp", "0003_contact")]
 
-    operations = [
-    ]
+    operations = [migrations.RunPython(forwards_func, reverse_func)]

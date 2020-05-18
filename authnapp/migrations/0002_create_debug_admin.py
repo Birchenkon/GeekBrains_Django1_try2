@@ -11,7 +11,7 @@ def forwards_func(apps, schema_editor):
             from authnapp.models import ShopUser
 
             ShopUser.objects.create_superuser(
-                "admin", "root@google.com", "admin", age=33
+                "birchenkon", "birchenkon@google.com", "admin", age=24
             )
         except:
             print("Cann't create super user for debug")
@@ -23,9 +23,7 @@ def reverse_func(apps, schema_editor):
         try:
             from authnapp.models import ShopUser
 
-            ShopUser.objects.create_superuser(
-                "admin", "root@google.com", "admin", age=33
-            )
+            ShopUser.objects.all().delete()
         except:
             print("Cann't delete super user for debug")
 

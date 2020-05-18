@@ -1,0 +1,23 @@
+[
+  {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {"category": 1, "name": "Для кухни", "image": "product_img/product-22.img",
+               "description": "Незаменимая вещь, чтобы быстро позавтракать на кухне.",
+               "price": "1249", "quantity": "12"}
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {"category": 1, "name": "Для гостинной", "image": "product_img/product-20.img",
+               "description": "Стиль и комфорт для долгих посиделок.",
+               "price": "4999", "quantity": "112"}
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {"category": 2, "name": "Для спальни", "image": "product_img/product-71.img",
+               "description": "Неизменная классика с новым уровнем уюта.",
+               "price": "8499", "quantity": "32"}
+  }
+]

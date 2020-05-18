@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import ProductCategory, Product
+from .models import ProductCategory, Product, Contact
 from django.conf import settings
+from django.utils import timezone
 
 
 def main(request):
@@ -28,16 +29,8 @@ def products(request, pk=None):
 
 
 def contact(request):
-    contacts_info = [
-        {"city": 'Москва', "phone": '+7-888-888-8888',
-         "imail": 'myshop_msc@gmail.com', "adres": "3-я улица Строителей д. 25"},
-        {"city": 'Санкт-Петербург', "phone": '+7-888-888-9999',
-         "imail": 'myshop_psb@gmail.com', "adres": "3-я улица Строителей д. 25"},
-        {"city": 'Ярославль', "phone": '+7-888-888-5555',
-         "imail": 'myshop_yar@gmail.com', "adres": "ул. Московская д.10"}
-    ]
-    content = {"contacts_info": contacts_info}
+    title = 'о нас'
+    visit_date = timezone.now()
+    locations = Contact.objects.all()
+    content = {"title": title, "visit_date": visit_date, "locations": locations}
     return render(request, 'mainapp/contact.html', context=content)
-
-
-# Create your views here.
