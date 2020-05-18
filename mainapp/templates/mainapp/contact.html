@@ -11,26 +11,27 @@
                 <a href="#" class="basket"></a>
 			</div>
 			<h1>наши контакты</h1>
+			<p>сегодня: {{ visit_date|date:"l, j F, Y" }}</p>
 		</div>
 	</div>
 {% endblock menu %}
 {% block content %}
 		<div class="location">
-			{% for info in contacts_info %}
+			{% for location in locations %}
 			<div class="location-1">
 				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>{{info.city}}</h4>
+				<h4>{{location.city}}</h4>
 				<div class="contacts">
 					<h5>Телефон</h5>
-					<p>{{info.phone}}</p>
+					<p>{{location.phone}}</p>
 				</div>
 				<div class="contacts">
 					<h5>Email</h5>
-					<p>{{info.imail}}</p>
+					<p>{{location.email}}</p>
 				</div>
 				<div class="contacts">
 					<h5>Адрес</h5>
-					<p>{{info.adres}}</p>
+					<p>{{location.address}}</p>
 				</div>
 			</div>
 			{% endfor %}
