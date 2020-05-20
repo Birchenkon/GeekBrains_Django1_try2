@@ -88,6 +88,16 @@ html, body {
 	position: absolute;
 	top: 58px;
 	left: 1210px;
+	text-decoration: none;
+	color: #8c8c8c;;
+}
+
+.basket_cnt_price{
+    padding-left: 35px;
+    font-size: 16px;
+    font-weight: 600;
+    float: left;
+    margin-top: -3px;
 }
 
 .clearfix:after {
@@ -1012,14 +1022,14 @@ td:first-child {
 	padding: 0px 98px;
 }
 .related .title {
-	height: 343px;
+	height: 200px;
 	margin-right: 0;
 }
 .related .title h2 {
-	margin-top: 245px;
+	margin-top: 95px;
 }
 .related .title .explore {
-	margin-top: 262px;
+	margin-top: 110px;
 }
 .related-products {
 	margin-bottom: 120px;
@@ -1070,3 +1080,4 @@ td:first-child {
 .related-products a:hover .text{
 	display: block;
 }
+

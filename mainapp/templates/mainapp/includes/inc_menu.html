@@ -26,3 +26,10 @@
         </li>
     </ul>
 <a href="#" class="search"></a>
+<a href="{% url 'basket:view' %}" class="basket">
+    <span class="basket_cnt_price">
+        {% if basket %}
+            {{basket_cnt}} {{basket_price}}&#8381
+        {% endif %}
+    </span>
+</a>
