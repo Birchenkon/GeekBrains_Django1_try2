@@ -6,17 +6,17 @@ from authnapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEdit
 
 
 def register(request):
-    title = 'регистрация'
-    if request.method == 'POST':
+    title = "регистрация"
+    if request.method == "POST":
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
 
         if register_form.is_valid():
             register_form.save()
-            return HttpResponseRedirect(reverse('auth:login'))
+            return HttpResponseRedirect(reverse("auth:login"))
     else:
         register_form = ShopUserRegisterForm()
 
-    content = {"title": title, 'register_form': register_form}
+    content = {"title": title, "register_form": register_form}
     return render(request, "authnapp/register.html", context=content)
 
 
@@ -43,19 +43,17 @@ def logout(request):
 
 
 def edit(request):
-    title = 'редактирование'
+    title = "редактирование"
 
-    if request.method == 'POST':
+    if request.method == "POST":
+
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
-            return HttpResponseRedirect(reverse('auth:edit'))
+            return HttpResponseRedirect(reverse("auth:edit"))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
 
-    content = {'title': title, 'edit_form': edit_form}
+    content = {"title": title, "edit_form": edit_form}
 
-    return render(request, 'authnapp/edit.html', content)
-
-
-# Create your views here.
+    return render(request, "authnapp/edit.html", content)
