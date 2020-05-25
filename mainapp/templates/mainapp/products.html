@@ -9,7 +9,6 @@
 
 				{% include 'mainapp/includes/inc_menu.html' %}
 
-                <a href="#" class="basket"></a>
 			</div>
 		</div>
 	</div>
@@ -22,34 +21,31 @@
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-						<img src="{%static 'img/prod-01.jpg' %}">
+					  <img src="/media/{{ hot_product.image }}" width="550" height="550">
 					</div>
 					<div class="slider-control">
-						{% for slider_prod in slider_products %}
-						<div class="block">
-							<a href="#"><img src="{% static 'img/' %}{{slider_prod.img}}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						{% endfor %}
+					  	<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" width="100" height="100" alt=""></a>
+					  	</div>
+					  	<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" width="100" height="100" alt=""></a>
+					  	</div>
+					  	<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" width="100" height="100" alt=""></a>
+					  	</div>
 					</div>
 				</div>
 
 				<div class="description">
-					<h3 class="big-bold">Отличный стул</h3>
-					<h3 class="red">Горячее предложение!*</h3>
-					<p class="price"> 2585.9 <span>руб</span></p>
-					<a href="#" class="red-button">
+					<h3 class="big-bold">{{ hot_product.name }}</h3>
+					<h3 class="red">горячее предложение*</h3>
+					<p class="price">{{ hot_product.price }} <span>руб</span></p>
+					<a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
 						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
 					</a>
 					<div class="description-text">
-						<p>Расположитесь комфортно.</p> 
-						<p>Отличное качество материалов
-						позволит вам это.</p> 
-						<p>Различные цвета</p>
-						<p>высочайший уровень
-						эргономики и прочность.</p>
-						<p>*акция действует до {% now "d.m.Y" %}</p>
+						{{ hot_product.description }}
+						<p>* предложение действительно до {% now "Y-m-d"%}</p>
 					</div>
 				</div>
 			</div>
