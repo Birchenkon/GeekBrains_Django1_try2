@@ -3,6 +3,7 @@ from .models import ProductCategory, Product, Contact
 from basketapp.models import Basket
 from django.conf import settings
 from django.utils import timezone
+import random
 
 
 def main(request):
@@ -12,17 +13,34 @@ def main(request):
     return render(request, "mainapp/index.html", context=content)
 
 
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
+
+
+def get_hot_product():
+    products = Product.objects.all()
+    return random.sample(list(products), 1)[0]
+
+
+def get_same_products(hot_product):
+    same_products = Product.objects.filter(category=hot_product.category).\
+                                    exclude(pk=hot_product.pk)[:3]
+    return same_products
+
+
 def products(request, pk=None):
     title = "Продукты"
     links_menu = ProductCategory.objects.all()
-    slider_products = [
-        {"img": "prod-2.jpg"},
-        {"img": "prod-3.jpg"},
-        {"img": "prod-4.jpg"},
-    ]
-    basket = []
-    basket_cnt = 0
-    basket_price = 0
+    # slider_products = [
+    #     {"img": "prod-2.jpg"},
+    #     {"img": "prod-3.jpg"},
+    #     {"img": "prod-4.jpg"},
+    # ]
+    basket = get_basket(request.user)
+
     if request.user.is_authenticated:
         basket = Basket.objects.filter(user=request.user)
 
@@ -34,32 +52,40 @@ def products(request, pk=None):
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category__pk=pk).order_by("price")
 
-        for bas in basket:
-            basket_cnt += bas.quantity
-            basket_price += basket_cnt * bas.product.price
-
         content = {
             "title": title,
             "links_menu": links_menu,
             "category": category,
             "products": products,
             "basket": basket,
-            "basket_cnt": basket_cnt,
-            "basket_price": basket_price,
         }
         return render(request, "mainapp/products_list.html", content)
 
-    same_products = Product.objects.all()[:3]
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
 
     content = {
-        "title": title,
-        "slider_products": slider_products,
-        "links_menu": links_menu,
-        "same_products": same_products,
-        "media_url": settings.MEDIA_URL,
+        'title': title,
+        'links_menu': links_menu,
+        'hot_product': hot_product,
+        'same_products': same_products,
+        'basket': basket,
     }
 
-    return render(request, "mainapp/products.html", context=content)
+    return render(request, 'mainapp/products.html', content)
+
+
+def product(request, pk):
+    title = 'продукты'
+
+    content = {
+        'title': title,
+        'links_menu': ProductCategory.objects.all(),
+        'product': get_object_or_404(Product, pk=pk),
+        'basket': get_basket(request.user),
+    }
+
+    return render(request, 'mainapp/product.html', content)
 
 
 def contact(request):

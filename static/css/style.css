@@ -15,6 +15,94 @@ html, body {
 .clr {
 	height: 384px;
 }
+.basket_container {
+    margin: 15px auto;
+    width: 70%;
+}
+
+.basket_list input[type="number"] {
+    width: 3em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket_list span.category_name {
+    margin-left: 2em;
+    width: 5em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket_list span.product_name {
+    margin-left: 1em;
+    width: 10em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket_list span.product_price {
+    margin-left: 1em;
+    width: 7em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket_list span.product_cost {
+    margin-left: 1em;
+    width: 7em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket_list .basket_record {
+    position: relative;
+    display: block;
+    height: 200px;
+    float: none;
+}
+
+.basket_container .head {
+    margin: 55px auto;
+}
+
+.basket_container button {
+    margin-left: 25px;
+    width: 150px;
+    display: block;
+    float: left;
+    background: #F5F5F5;
+}
+
+.basket_container button a {
+    text-decoration: none;
+    color: #555;
+}
+
+.basket_container img {
+    display: block;
+    float: left;
+    width: 150px;
+    border-radius: 25px;
+}
+
+.basket_container input[type="submit"] {
+    width: 150px;
+    display: block;
+    float: left;
+    margin-bottom: 25px;
+}
+
+.basket_container .basket_summary {
+    display: block;
+    margin-left: 50px;
+    margin-bottom: 15px;
+    color: #555;
+}
 
 .container {
 	width: 1366px;
@@ -435,7 +523,7 @@ html, body {
 
 .red {
 	text-transform: uppercase;
-	color: #e53935;
+	color: #A52A2A;
 	font-size: 18px;
 	font-weight: 700;
 	text-align: left;
@@ -917,7 +1005,6 @@ td:first-child {
 .slider-control {
 	width: 420px;
 	height: 100px;
-	margin: 11px auto 0px;
 	padding-left: 100px;
 }
 .slider-control .block {
@@ -956,7 +1043,7 @@ td:first-child {
 }
 .description .red {
 	text-transform: uppercase;
-	color: #e53935;
+	color: #CD5C5C;
 	font-size: 18px;
 	font-weight: 700;
 	text-align: center;
@@ -985,7 +1072,7 @@ td:first-child {
 	height: 71px;
 	width: 510px;
 	border-radius: 35px;
-	background-color: #f44336;
+	background-color: #A52A2A;
 	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -1003,19 +1090,20 @@ td:first-child {
 }
 .red-button:active {
 	box-shadow: none;
-	background-color: #d41306;
+	background-color: #8B0000;
 }
 
 .description-text {
 	margin-top: 50px;
 	color:  #212121;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 300;
 	line-height: 24px;
-	text-align: left;
+	text-align: center;
 }
 .description-text p {
 	margin-bottom: 0.5em;
+	font-size: 14px;
 }
 
 .related {

@@ -9,7 +9,6 @@
 
 				{% include 'mainapp/includes/inc_menu.html' %}
 
-                <a href="#" class="basket"></a>
 			</div>
 		</div>
 	</div>
@@ -28,7 +27,7 @@
         <div class="related-products clearfix">
             {% for prod in products %}
             <div class="block">
-                <a href="{% url 'basket:add' prod.pk %}">
+                <a href="{% url 'products:product' prod.pk %}">
                     <img src="/media/{{ prod.image }}" alt="product">
                     <div class="text">
                         <img src="{% static 'img/icon-hover.png' %}" alt="hover">
